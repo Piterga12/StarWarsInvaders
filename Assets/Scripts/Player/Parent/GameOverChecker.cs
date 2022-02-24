@@ -22,7 +22,7 @@ public class GameOverChecker : MonoBehaviour
         {
             Debug.Log(playersAlive);
             playersAlive++;
-            cautionTime = 5;
+            cautionTime = 1;
         }
     }
     void Update()

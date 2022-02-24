@@ -12,7 +12,7 @@ public class JumpPlayer : MonoBehaviour
 
     void OnDisable()
     {
-        
+        transform.parent.gameObject.GetComponent<InputSystemKeyboard>().OnJump -= Jump;
         gameObject.GetComponent<PlayerDeath>().OnDeath -= Death;
     }
 
@@ -34,7 +34,7 @@ public class JumpPlayer : MonoBehaviour
 
     public void Death()
     {
-        transform.parent.gameObject.GetComponent<InputSystemKeyboard>().OnJump -= Jump;
+        
         gameObject.GetComponent<PlayerDeath>().OnDeath -= Death;
         Debug.Log("dead");
     }
@@ -53,7 +53,7 @@ public class JumpPlayer : MonoBehaviour
         if (GroundChecker)
         {
             _anim.SetTrigger("Jump");
-            jump = 5;
+            jump = 6f;
             GroundChecker = false;
         }
     }
