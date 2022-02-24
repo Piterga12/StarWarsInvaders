@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F1D81F91-0AB5-6362-4A48-B5D8470D2F99}</ProjectGuid>
+    <ProjectGuid>{2B243791-097B-108E-AFCC-9DC25FEB9B02}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -59,17 +59,24 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Player\Health\HealthSystem.cs" />
+    <Compile Include="Assets\Scripts\Player\Collider\PlayerColliders.cs" />
+    <Compile Include="Assets\Scripts\Spawner\PlayerGenerator.cs" />
+    <Compile Include="Assets\Scripts\Player\Health\PlayerDeath.cs" />
+    <Compile Include="Assets\Scripts\Player\Parent\GameOverChecker.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraMove.cs" />
     <Compile Include="Assets\Scripts\Player\Parent\InputSystemKeyboard.cs" />
+    <Compile Include="Assets\Scripts\Spawner\PlayerPosition.cs" />
     <Compile Include="Assets\Scripts\Player\Movement\MovePlayer.cs" />
     <Compile Include="Assets\Scripts\Player\Movement\JumpPlayer.cs" />
+    <Compile Include="Assets\Scripts\Player\Movement\Activator\PlayerActive.cs" />
+    <Compile Include="Assets\Scripts\Destroyer.cs" />
     <Compile Include="Assets\Scripts\CommonScripts\Constants.cs" />
-    <Compile Include="Assets\Scripts\Player\Parent\GameOverChecker.cs" />
-    <Compile Include="Assets\Scripts\Player\HealthSystem.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyMove.cs" />
     <Compile Include="Assets\Scripts\Pooling\PoolingManager.cs" />
     <Compile Include="Assets\Scripts\Player\Parent\MoveParent.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyMove.cs" />
-    <Compile Include="Assets\Scripts\Destroyer.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyGenerator\EnemyGenerator.cs" />
+    <Compile Include="Assets\Scripts\Player\Health\PlayerDestroyer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

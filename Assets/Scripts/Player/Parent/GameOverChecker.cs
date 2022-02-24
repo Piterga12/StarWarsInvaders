@@ -5,27 +5,33 @@ using UnityEngine;
 public class GameOverChecker : MonoBehaviour
 {
     int playersAlive = 0;
+    float cautionTime = 0;
     void OnEnable()
     {
-        GetComponentInChildren<HealthSystem>().isActive += PlayersCount;
+        PlayerColliders.isActive += PlayersCount;
     }
     void OnDisable()
     {
-        GetComponentInChildren<HealthSystem>().isActive -= PlayersCount;
+        PlayerColliders.isActive -= PlayersCount;
     }
 
 
     void PlayersCount()
-    {  
-        Debug.Log(playersAlive);
-        playersAlive++;
+    {
+        if (cautionTime <= 0)
+        {
+            Debug.Log(playersAlive);
+            playersAlive++;
+            cautionTime = 5;
+        }
     }
     void Update()
     {
-        if (playersAlive == 0)
+        if (playersAlive < 0)
         {
            Debug.Log(playersAlive);
         }
-        
+
+        cautionTime = cautionTime - Time.deltaTime;
     }
 }

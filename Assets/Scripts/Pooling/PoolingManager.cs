@@ -9,6 +9,13 @@ using UnityEngine;
         public GameObject objectToPool;
         public int amount;
     }
+[System.Serializable]
+public class PooledItems2
+{
+    public string Name;
+    public GameObject objectToPool;
+    public int amount;
+}
 public class PoolingManager : MonoBehaviour
 {
     public GameObject playerParent;
@@ -28,6 +35,8 @@ public class PoolingManager : MonoBehaviour
 
     [SerializeField]
     private List<PooledItems> pooledLists = new List<PooledItems>();
+    [SerializeField]
+    private List<PooledItems2> pooledLists2 = new List<PooledItems2>();
 
     [SerializeField]
     private Dictionary<string, List<GameObject>> _items = new Dictionary<string, List<GameObject>>();
@@ -47,6 +56,21 @@ public class PoolingManager : MonoBehaviour
                 tmp.transform.parent = playerParent.transform;
                 tmp.SetActive(false);
                 
+                _items[l.Name].Add(tmp);
+            }
+        }
+        for (int i = 0; i < pooledLists2.Count; i++)
+        {
+            PooledItems2 l = pooledLists2[i];
+            _items.Add(l.Name, new List<GameObject>());
+
+            for (int j = 0; j < l.amount; j++)
+            {
+                GameObject tmp;
+
+                tmp = Instantiate(l.objectToPool);
+                tmp.SetActive(false);
+
                 _items[l.Name].Add(tmp);
             }
         }

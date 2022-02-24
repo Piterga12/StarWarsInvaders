@@ -12,12 +12,14 @@ public class JumpPlayer : MonoBehaviour
 
     void OnDisable()
     {
-        transform.parent.gameObject.GetComponent<InputSystemKeyboard>().OnJump -= Jump;
+        
+        gameObject.GetComponent<PlayerDeath>().OnDeath -= Death;
     }
 
     void Start()
     {
         transform.parent.gameObject.GetComponent<InputSystemKeyboard>().OnJump += Jump;
+        gameObject.GetComponent<PlayerDeath>().OnDeath += Death;
         jump = -9.8f;
         _anim = GetComponentInChildren<Animator>();
     }
@@ -28,6 +30,13 @@ public class JumpPlayer : MonoBehaviour
             GroundChecker = true;
         }
         
+    }
+
+    public void Death()
+    {
+        transform.parent.gameObject.GetComponent<InputSystemKeyboard>().OnJump -= Jump;
+        gameObject.GetComponent<PlayerDeath>().OnDeath -= Death;
+        Debug.Log("dead");
     }
 
     // Update is called once per frame

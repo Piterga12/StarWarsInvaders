@@ -7,7 +7,7 @@ public class HealthSystem : MonoBehaviour
 {
     bool active = false;
 
-    public event Action isActive = delegate { };
+    //public static event Action isActive = delegate { };
 
 
     // Update is called once per frame
@@ -15,7 +15,7 @@ public class HealthSystem : MonoBehaviour
     {
         if (!active)
         {
-            isActive();
+           //isActive();
             active = true;
         }
     }
