@@ -18,7 +18,6 @@ public class PlayerColliders : MonoBehaviour
         {
             transform.SetParent(other.transform.parent);
             gameObject.layer = Constants.layerPlayer;
-            Debug.Log("WHYYYYY?");
             isActive();
         }
     }

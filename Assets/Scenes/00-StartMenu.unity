@@ -354,5 +354,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5323181288835563365, guid: 2c582d6c96d5c9d4bbb60a94a5ddfbec, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2c582d6c96d5c9d4bbb60a94a5ddfbec, type: 3}
+--- !u!1 &5323181288916534209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5323181288835563362, guid: 2c582d6c96d5c9d4bbb60a94a5ddfbec, type: 3}
+  m_PrefabInstance: {fileID: 5323181288916534208}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5323181288916534210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5323181288916534209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa92293afa3c564487fb4cfaf904bd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  mNave: {fileID: 2100000, guid: 1bc16ddf9eb93114eb8dc1febd6adca1, type: 2}
+  numNave: 2
+  rotacionN: 30
+  distanciaN: 5
+  separacionN: 0.05
+  escalaN: 0.5
+  velocidadRotacionN: 80
+  numEstrellas: 200
+  mEstrella: {fileID: 2100000, guid: 999892f9c14817d49af6e80e4dcc98f6, type: 2}
+  anchoCampoEstrellas: 300
+  altoCampoEstrellas: 200
+  distanciaCampoEstrellas: 100

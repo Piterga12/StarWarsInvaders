@@ -42,7 +42,7 @@ public class JumpPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GroundChecker)
+        if (!GroundChecker || jump>0)
         {
             jump = jump-0.3f;
         }

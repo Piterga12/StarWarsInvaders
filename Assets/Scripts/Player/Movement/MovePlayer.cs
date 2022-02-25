@@ -12,6 +12,7 @@ public class MovePlayer : MonoBehaviour
 
     CharacterController body;
     Animator _anim;
+    Transform _cam;
 
     private InputSystemKeyboard inputSystem;
     private JumpPlayer jumpPlayer;
@@ -30,7 +31,7 @@ public class MovePlayer : MonoBehaviour
         gameObject.GetComponent<PlayerDeath>().OnDeath += Death;
         _anim = GetComponentInChildren<Animator>();
         body = GetComponent<CharacterController>();
-        
+        _cam = GameObject.Find("Main Camera").transform;
         jumpPlayer = GetComponent<JumpPlayer>();
         
     }
@@ -49,6 +50,14 @@ public class MovePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(_cam.transform.position.z > transform.position.z - 8)
+        {
+            speed = 6;
+        }
+        else
+        {
+            speed = 4;
+        }
         body.Move(new Vector3(sideSpeed*inputSystem.hor, jumpPlayer.jump, speed)*Time.deltaTime);
         if (inputSystem.hor < 0)
         {

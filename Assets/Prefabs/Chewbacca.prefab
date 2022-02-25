@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 410682788315745603}
   - component: {fileID: 410682788315745601}
   - component: {fileID: 410682788315745600}
+  - component: {fileID: 3512856094918203651}
   m_Layer: 8
   m_Name: Chewbacca
   m_TagString: Untagged
@@ -160,6 +161,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.8421781, z: 0.40011096}
   m_Center: {x: 0, y: 0.92394876, z: 0.06099705}
+--- !u!114 &3512856094918203651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410682788315745605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439bceb96316bf64282a6c2ab44fc3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &465947312482201118
 GameObject:
   m_ObjectHideFlags: 0

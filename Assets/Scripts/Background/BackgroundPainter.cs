@@ -7,19 +7,19 @@ public class BackgroundPainter : MonoBehaviour
 {
     public Mesh model;
 
-    public Material mTierra;
+    public Material mNave;
 
-    public int numTierras = 2;
+    public int numNave = 2;
 
     int changeDistance = 0;
     float changeTimer = 0;
 
-    public float rotacionT = 30;
-    public float distanciaT = 5;
-    public float separacionT = 0.05f;
-    public float escalaT = 0.5f;
+    public float rotacionN = 30;
+    public float distanciaN = 5;
+    public float separacionN = 0.05f;
+    public float escalaN = 0.5f;
 
-    public float velocidadRotacionT = 30.0f;
+    public float velocidadRotacionN = 30.0f;
 
 
     public int numEstrellas = 200;
@@ -30,8 +30,6 @@ public class BackgroundPainter : MonoBehaviour
     public float altoCampoEstrellas = 200;
     public float distanciaCampoEstrellas = 100; //Sistema mundo
 
-    public float velocidadEscalaEstrellas = 0.1f;
-
 
     Vector3[] posicionesEstrellas;
     Matrix4x4[] matricesEstrella;
@@ -39,7 +37,7 @@ public class BackgroundPainter : MonoBehaviour
     float[] escalaEstrellas;
 
     float escalaEstrella = 0.5f;
-    CommandBuffer commandsPlanetas;
+    CommandBuffer commandsNave;
     CommandBuffer commandsEstrellas;
 
 
@@ -53,10 +51,9 @@ public class BackgroundPainter : MonoBehaviour
 
         for (int i = 0; i < numEstrellas; i++)
         {
-            posicionesEstrellas[i] = new Vector3(
-                UnityEngine.Random.Range(-anchoCampoEstrellas/2, anchoCampoEstrellas/2),
+            posicionesEstrellas[i] = new Vector3(-anchoCampoEstrellas,
                 UnityEngine.Random.Range(-altoCampoEstrellas / 2, altoCampoEstrellas / 2),
-                distanciaCampoEstrellas);
+                UnityEngine.Random.Range(-distanciaCampoEstrellas/2, distanciaCampoEstrellas / 2));
 
             matricesEstrella[i] = Matrix4x4.Translate(posicionesEstrellas[i]);
 
@@ -75,14 +72,14 @@ public class BackgroundPainter : MonoBehaviour
         commandsEstrellas.DrawMeshInstanced(model, 0, mEstrella, -1, matricesEstrellaEscaladas, numEstrellas);
 
         Camera.main.AddCommandBuffer(CameraEvent.BeforeForwardAlpha, commandsEstrellas);
-        commandsPlanetas = new CommandBuffer();
-        Camera.main.AddCommandBuffer(CameraEvent.BeforeForwardAlpha, commandsPlanetas);
+        commandsNave = new CommandBuffer();
+        Camera.main.AddCommandBuffer(CameraEvent.BeforeForwardAlpha, commandsNave);
     }
 
     // Update is called once per frame
     void Update()
     {
-        commandsPlanetas.Clear();
+        commandsNave.Clear();
         Matrix4x4 MSol = transform.localToWorldMatrix;
 
         if (changeTimer <= 0)
@@ -97,33 +94,34 @@ public class BackgroundPainter : MonoBehaviour
             }
             changeTimer = Random.Range(1,2);
         }
+        /*if (distanciaN > 5.3f)
+        {
+            changeDistance = 1;
+            changeTimer = Random.Range(3, 4);
+        }*/
         changeTimer = changeTimer - Time.deltaTime;
 
         if (changeDistance == 1)
         {
-            distanciaT = distanciaT + 0.01f;
+            distanciaN = distanciaN - 0.1f;
         }
         else
         {
-            distanciaT = distanciaT - 0.01f;
+            distanciaN = distanciaN + 0.1f;
         }
 
-        for (int i = 0; i < numTierras; i++)
+        for (int i = 0; i < numNave; i++)
         {
-            Matrix4x4 MTierra = MSol * Matrix4x4.Rotate(Quaternion.Euler(0, 0, rotacionT +
-                i * (360.0f / numTierras))) *
-                Matrix4x4.Translate(new Vector3(distanciaT + i * separacionT, 0, 0)) *
-                Matrix4x4.Scale(new Vector3(escalaT, escalaT, 1));
+            Matrix4x4 MNave = MSol * Matrix4x4.Rotate(Quaternion.Euler(0,0,rotacionN +
+                i * (360.0f / numNave))) *
+                Matrix4x4.Translate(new Vector3(0,distanciaN + i * separacionN,0)) *
+                Matrix4x4.Scale(new Vector3(escalaN, escalaN, 1));
 
-            commandsPlanetas.DrawMesh(model, MTierra, mTierra, 0, -1, null);
+            commandsNave.DrawMesh(model, MNave, mNave, 0, -1, null);
         }
 
-        rotacionT += velocidadRotacionT * Time.deltaTime;
+        rotacionN += velocidadRotacionN * Time.deltaTime;
         
     }
 
-    /*private void OnRenderObject()
-    {
-        Graphics.ExecuteCommandBuffer(commands);
-    }*/
 }

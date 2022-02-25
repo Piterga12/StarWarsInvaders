@@ -75,9 +75,12 @@
     <Compile Include="Assets\Scripts\Enemy\EnemyMove.cs" />
     <Compile Include="Assets\Scripts\Pooling\PoolingManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyGenerator\EnemyGenerator.cs" />
+    <Compile Include="Assets\Scripts\Background\BackgroundPainterMenu.cs" />
     <Compile Include="Assets\Scripts\Player\Health\PlayerDestroyer.cs" />
     <Compile Include="Assets\Scripts\Player\Parent\MoveParent.cs" />
     <Compile Include="Assets\Scripts\Background\BackgroundPainter.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
+    <Compile Include="Assets\Scripts\__GameManager\PauseManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

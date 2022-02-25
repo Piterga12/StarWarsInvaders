@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class GameOverChecker : MonoBehaviour
 {
-    int playersAlive = 0;
+    public int playersAlive = 0;
     float cautionTime = 0;
     void OnEnable()
     {
         PlayerColliders.isActive += PlayersCount;
+        PlayerDestroyer.isUnactive += PlayersUncount;
     }
     void OnDisable()
     {
         PlayerColliders.isActive -= PlayersCount;
+        PlayerDestroyer.isUnactive -= PlayersUncount;
     }
 
 
@@ -20,10 +22,14 @@ public class GameOverChecker : MonoBehaviour
     {
         if (cautionTime <= 0)
         {
-            Debug.Log(playersAlive);
+            //Debug.Log(playersAlive);
             playersAlive++;
             cautionTime = 1;
         }
+    }
+    void PlayersUncount()
+    {
+        playersAlive--;
     }
     void Update()
     {
