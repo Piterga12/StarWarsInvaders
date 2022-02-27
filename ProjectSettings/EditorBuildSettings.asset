@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/04-Level3.unity
     guid: bcfe0e8dab8b7954097e11e98281d8ed
+  - enabled: 1
+    path: Assets/Scenes/05-Credits.unity
+    guid: 4ec37b676b7e9bf409dc2a3f412d6f26
   m_configObjects: {}

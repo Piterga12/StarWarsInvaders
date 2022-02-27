@@ -48,6 +48,7 @@ public class PauseManager : MonoBehaviour
     {
         SceneManager.LoadScene(i);
         Time.timeScale = 1;
+        Cursor.visible = false;
     }
 
 

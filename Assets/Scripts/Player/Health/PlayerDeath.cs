@@ -15,15 +15,18 @@ public class PlayerDeath : MonoBehaviour
     MovePlayer _move;
     JumpPlayer _jump;
     GameOverChecker _check;
+    AudioSource _audio;
 
     private void Start()
     {
         _anim = GetComponentInChildren<Animator>();
         _move = GetComponent<MovePlayer>();
+        _audio = GetComponent<AudioSource>();
         _jump = GetComponent<JumpPlayer>();
         playerTrigger = GameObject.Find("PlayersTriggers").transform;
         player = GameObject.Find("Players").gameObject;
         _check = player.GetComponent<GameOverChecker>();
+        _audio.time = 0.5f;
     }
 
     void Update()
@@ -55,6 +58,7 @@ public class PlayerDeath : MonoBehaviour
                     transform.SetParent(playerTrigger);
                     _anim.SetTrigger("Death");
                     OnDeath();
+                    _audio.Play();
                 }
 
 
@@ -73,6 +77,7 @@ public class PlayerDeath : MonoBehaviour
                     transform.SetParent(playerTrigger);
                     _anim.SetTrigger("Death");
                     OnDeath();
+                    _audio.Play();
                 }
             }
             else if (LayerMask.LayerToName(other.gameObject.layer).Equals("Obstacles2"))
@@ -83,6 +88,7 @@ public class PlayerDeath : MonoBehaviour
                 transform.SetParent(playerTrigger);
                 _anim.SetTrigger("Death");
                 OnDeath();
+                _audio.Play();
             }
         }
     }

@@ -30,7 +30,6 @@ public class PlayerDestroyer : MonoBehaviour
             _move.enabled = false;
             _jump.enabled = false;
             gameObject.layer = Constants.layerPlayerChild;
-            Debug.Log(gameObject.layer);
             gameObject.SetActive(false);
             transform.SetParent(playerTrigger);
             

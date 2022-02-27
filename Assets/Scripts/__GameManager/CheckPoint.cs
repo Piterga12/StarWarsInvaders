@@ -13,6 +13,10 @@ public class CheckPoint : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if(_scene == 4)
+        {
+            Cursor.visible = true;
+        }
         SceneManager.LoadScene(_scene);
     }
 }
