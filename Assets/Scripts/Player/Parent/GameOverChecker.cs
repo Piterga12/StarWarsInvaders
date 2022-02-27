@@ -6,6 +6,8 @@ public class GameOverChecker : MonoBehaviour
 {
     public int playersAlive = 0;
     float cautionTime = 0;
+    public GameObject _death;
+
     void OnEnable()
     {
         PlayerColliders.isActive += PlayersCount;
@@ -22,7 +24,6 @@ public class GameOverChecker : MonoBehaviour
     {
         if (cautionTime <= 0)
         {
-            //Debug.Log(playersAlive);
             playersAlive++;
             cautionTime = 1;
         }
@@ -35,7 +36,9 @@ public class GameOverChecker : MonoBehaviour
     {
         if (playersAlive < 0)
         {
-           Debug.Log(playersAlive);
+            _death.SetActive(true);
+            Cursor.visible = true;
+            Time.timeScale = 0;
         }
 
         cautionTime = cautionTime - Time.deltaTime;

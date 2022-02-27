@@ -7,6 +7,15 @@ public class PlayerActive : MonoBehaviour
     MovePlayer _move;
     JumpPlayer _jump;
     bool active=false;
+
+    void OnEnable()
+    {
+        PlayerDestroyer.isUnactive += NotActive;
+    }
+    void OnDisable()
+    {
+        PlayerDestroyer.isUnactive -= NotActive;
+    }
     void Start()
     {
         _move = GetComponent<MovePlayer>();
@@ -22,5 +31,10 @@ public class PlayerActive : MonoBehaviour
             _jump.enabled = true;
             active = true;
         }
+    }
+
+    void NotActive()
+    {
+        active = false;
     }
 }

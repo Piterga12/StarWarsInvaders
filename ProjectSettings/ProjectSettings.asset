@@ -669,7 +669,7 @@ PlayerSettings:
   cloudServicesEnabled:
     Analytics: 1
     Build: 0
-    Collab: 1
+    Collab: 0
     Game Performance: 0
     Purchasing: 0
     UDP: 0
@@ -688,7 +688,7 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 3f109d12-c738-4630-ba14-4376bb64afb5
+  cloudProjectId: 7c72f242-54e2-4a75-b245-cc64cb404831
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: StarWars Invaders

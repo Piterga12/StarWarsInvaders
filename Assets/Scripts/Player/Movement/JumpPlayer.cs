@@ -7,18 +7,20 @@ public class JumpPlayer : MonoBehaviour
     public bool GroundChecker;
     //float timerJump=0;
     public float jump { get; private set; }
+    GameObject _player;
 
     Animator _anim;
 
     void OnDisable()
     {
-        transform.parent.gameObject.GetComponent<InputSystemKeyboard>().OnJump -= Jump;
+        _player.GetComponent<InputSystemKeyboard>().OnJump -= Jump;
         gameObject.GetComponent<PlayerDeath>().OnDeath -= Death;
     }
 
     void Start()
     {
-        transform.parent.gameObject.GetComponent<InputSystemKeyboard>().OnJump += Jump;
+        _player = GameObject.Find("Players");
+        _player.GetComponent<InputSystemKeyboard>().OnJump += Jump;
         gameObject.GetComponent<PlayerDeath>().OnDeath += Death;
         jump = -9.8f;
         _anim = GetComponentInChildren<Animator>();

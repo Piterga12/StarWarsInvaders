@@ -54,6 +54,10 @@ public class MovePlayer : MonoBehaviour
         {
             speed = 6;
         }
+        else if(_cam.transform.position.z < transform.position.z - 7)
+        {
+            speed = 3;
+        }
         else
         {
             speed = 4;
@@ -70,6 +74,7 @@ public class MovePlayer : MonoBehaviour
         {
             _anim.SetBool("Left", false); 
             _anim.SetBool("Right", false);
+            _anim.SetBool("Run", true);
         }
     }
 }

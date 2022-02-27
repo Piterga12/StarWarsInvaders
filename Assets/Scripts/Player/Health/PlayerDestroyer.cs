@@ -6,10 +6,15 @@ using System;
 public class PlayerDestroyer : MonoBehaviour
 {
     public static event Action isUnactive = delegate { };
+    private Transform playerTrigger;
+    MovePlayer _move;
+    JumpPlayer _jump;
 
     private void Start()
     {
-        
+        _move = GetComponent<MovePlayer>();
+        _jump = GetComponent<JumpPlayer>();
+        playerTrigger = GameObject.Find("PlayersTriggers").transform;
     }
     private void FixedUpdate()
     {
@@ -22,8 +27,12 @@ public class PlayerDestroyer : MonoBehaviour
                 isUnactive();
             }
             
+            _move.enabled = false;
+            _jump.enabled = false;
             gameObject.layer = Constants.layerPlayerChild;
+            Debug.Log(gameObject.layer);
             gameObject.SetActive(false);
+            transform.SetParent(playerTrigger);
             
         }
     }

@@ -7,6 +7,8 @@ public class PlayerDeath : MonoBehaviour
 {
     public event Action OnDeath = delegate { };
 
+    public bool GodMode = false;
+
     Transform playerTrigger;
     GameObject player;
     Animator _anim;
@@ -24,32 +26,56 @@ public class PlayerDeath : MonoBehaviour
         _check = player.GetComponent<GameOverChecker>();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            GodMode = true;
+        } else if (Input.GetKeyDown(KeyCode.H))
+        {
+            GodMode= false;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (LayerMask.LayerToName(other.gameObject.layer).Equals("Enemy"))
+        if (!GodMode)
         {
-            if (_check.playersAlive>=2)
+            if (LayerMask.LayerToName(other.gameObject.layer).Equals("Enemy"))
             {
-                other.gameObject.GetComponent<EnemyHealth>().EnemyDeath(1);
-            }
-            else
-            {
-                _move.enabled = false;
-                _jump.enabled = false;
+                if (_check.playersAlive >= 2)
+                {
+                    other.gameObject.GetComponent<EnemyHealth>().EnemyDeath(1);
+                }
+                else
+                {
+                    _move.enabled = false;
+                    _jump.enabled = false;
 
-                transform.SetParent(playerTrigger);
-                _anim.SetTrigger("Death");
-                OnDeath();
+                    transform.SetParent(playerTrigger);
+                    _anim.SetTrigger("Death");
+                    OnDeath();
+                }
+
+
             }
-                
-            
-        } else if (LayerMask.LayerToName(other.gameObject.layer).Equals("Enemy2"))
+            else if (LayerMask.LayerToName(other.gameObject.layer).Equals("Enemy2"))
             {
-            if (_check.playersAlive >= 4)
-            {
-                other.gameObject.GetComponent<EnemyHealth>().EnemyDeath(1);
+                if (_check.playersAlive >= 4)
+                {
+                    other.gameObject.GetComponent<EnemyHealth>().EnemyDeath(1);
+                }
+                else
+                {
+                    _move.enabled = false;
+                    _jump.enabled = false;
+
+                    transform.SetParent(playerTrigger);
+                    _anim.SetTrigger("Death");
+                    OnDeath();
+                }
             }
-            else
+            else if (LayerMask.LayerToName(other.gameObject.layer).Equals("Obstacles2"))
             {
                 _move.enabled = false;
                 _jump.enabled = false;

@@ -7,6 +7,11 @@ public class PauseManager : MonoBehaviour
 {
     public GameObject pauseMenu, controlsMenu;
 
+    void Start()
+    {
+        Time.timeScale = 1;
+    }
+
     public void pauseButton()
     {
         pauseMenu.SetActive(true);
@@ -38,6 +43,11 @@ public class PauseManager : MonoBehaviour
         controlsMenu.SetActive(false);
         pauseMenu.SetActive(true);
 
+    }
+    public void ReloadLevel(int i)
+    {
+        SceneManager.LoadScene(i);
+        Time.timeScale = 1;
     }
 
 
